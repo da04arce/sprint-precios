@@ -160,10 +160,20 @@ V24 — COTIZACIONES EN ARS O CRC
 - La seña y el saldo se calculan en la moneda seleccionada.
 - No se modificaron las fórmulas base, rangos ni los cálculos de precios existentes.
 
-V25 — PWA / IPAD
-- Se agrego manifest.webmanifest para instalar Sprint Precios desde Safari en iPad.
-- Se agregaron iconos 192, 512 y Apple Touch Icon con branding Sprint.
-- Se agrego service-worker.js para cache offline una vez publicada por HTTPS y cargada al menos una vez.
-- Se agregaron metadatos de iOS para abrir desde la pantalla de inicio como app independiente.
-- No se modificaron formulas, precios, rangos, cotizadores ni PDF.
-- IMPORTANTE: para instalarla correctamente como PWA en iPad debe servirse desde HTTPS; abrir index.html como archivo local no activa el service worker.
+V26 — PRO CORE
+- Primer rango: 1 - 9 unidades.
+- El cotizador aplica ese precio automáticamente a cantidades de 1 a 9.
+- Sin cambios de precios ni fórmulas.
+
+V27 — MIGRACIÓN AUTOMÁTICA PRO CORE
+- Cambia automáticamente el rango guardado "Unidad" a "1 - 9".
+- Mantiene intactos precios, costos, tipos de cambio y demás configuraciones.
+- El cotizador Pro Core usa el primer rango para cantidades de 1 a 9.
+- Caché PWA incrementada a v27 para la versión de iPad.
+
+V28 — CORRECCIÓN DEFINITIVA PRO CORE
+- Se corrigió la migración para usar la propiedad real data.jerseys.lineas.
+- Pro Core cambia automáticamente de "Unidad" a "1 - 9".
+- El cotizador mantiene 1–9 para el primer rango.
+- No se modifican precios, costos ni demás configuraciones.
+- Caché PWA actualizada a v28.

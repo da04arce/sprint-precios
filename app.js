@@ -24,7 +24,7 @@ const defaults={appDataVersion:14,
         {rango:'100 - 200',unitUSD:null,excelGastoUSD:null,excelVentaUSD:null}
       ]},
       {id:'procore',name:'Jersey Pro Core',rows:[
-        {rango:'Unidad',unitUSD:36.5,excelGastoUSD:51.5,excelVentaUSD:72.1},
+        {rango:'1 - 9',unitUSD:36.5,excelGastoUSD:51.5,excelVentaUSD:72.1},
         {rango:'10 - 49',unitUSD:21.62,excelGastoUSD:36.62,excelVentaUSD:51.268},
         {rango:'50 unidades',unitUSD:20.53,excelGastoUSD:35.53,excelVentaUSD:49.742}
       ]},
@@ -75,6 +75,30 @@ function normalizeData(d){
 }
 function mergeDeep(target,source){if(!source||typeof source!=='object')return target;Object.keys(source).forEach(k=>{if(source[k]&&typeof source[k]==='object'&&!Array.isArray(source[k])&&target[k]&&typeof target[k]==='object'&&!Array.isArray(target[k]))mergeDeep(target[k],source[k]);else target[k]=source[k]});return target}
 function save(){localStorage.setItem(STORAGE,JSON.stringify(data));const e=document.getElementById('saveState');if(e){e.textContent='Guardado ✓';setTimeout(()=>e.textContent='Datos guardados en este navegador',1000)}}
+
+function migrateV28(){
+  try{
+    if(data && data._migrationV28Done) return;
+
+    const lines=data && data.jerseys && data.jerseys.lineas;
+    if(Array.isArray(lines)){
+      const pro=lines.find(line=>line.id==='procore');
+      if(pro && Array.isArray(pro.rows) && pro.rows[0]){
+        const old=String(pro.rows[0].rango||'').trim().toLowerCase();
+        if(old==='unidad' || old==='1 unidad'){
+          pro.rows[0].rango='1 - 9';
+        }
+      }
+    }
+
+    data._migrationV28Done=true;
+    save();
+  }catch(err){
+    console.warn('Migración v28:',err);
+  }
+}
+migrateV28();
+
 function num(v,d=2){if(v===null||v===undefined||v==='')return '—';return Number(v).toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d})}
 function ars(v){return v==null?'—':'$ '+num(v,0)} function usd(v){return v==null?'—':'US$ '+num(v,2)} function crc(v){return v==null?'—':'₡ '+num(v,0)} function pct(v){return num(v,1)+'%'}
 function setPath(path,value){const parts=path.split('.');let o=data;for(let i=0;i<parts.length-1;i++)o=o[parts[i]];o[parts[parts.length-1]]=value===''?null:Number(value)}
@@ -143,7 +167,7 @@ function jerseyRangeForQuantity(line,q){
     return null;
   }
   if(line.id==='procore'){
-    if(q===1) return 0;
+    if(q>=1 && q<=9) return 0;
     if(q>=10 && q<=49) return 1;
     if(q===50) return 2;
     return null;

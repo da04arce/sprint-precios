@@ -1,0 +1,1519 @@
+
+:root{
+  --bg:#f3f6f9;
+  --card:#ffffff;
+  --text:#18242e;
+  --muted:#6f7c86;
+  --line:#dce3e8;
+  --accent:#073B5C;
+  --accent-dark:#073B5C;
+  --accent-soft:#f0f1fa;
+  --accent-pale:#f7f7fc;
+  --danger:#b42318;
+  --title-font:"Bernoru","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body-font:"Knockout Featherweight","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{
+  margin:0;
+  font-family:var(--body-font);
+  background:var(--bg);
+  color:var(--text);
+  letter-spacing:.015em;
+}
+button,input,select{font:inherit}
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);min-height:100vh}
+.sidebar{
+  position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;
+  padding:34px 22px 22px;
+  color:#fff;
+  background:#073B5C;
+  box-shadow:10px 0 30px rgba(16,55,80,.08);
+}
+.sidebar-brand{padding:5px 16px 34px}
+.brand-logo{display:block;width:205px;max-width:100%;height:auto;object-fit:contain}
+.sidebar-nav{display:flex;flex-direction:column;gap:7px}
+.nav{
+  width:100%;border:0;background:transparent;color:#fff;
+  display:flex;align-items:center;gap:14px;text-align:left;
+  padding:13px 15px;border-radius:9px;cursor:pointer;
+  font-size:18px;transition:.15s ease;
+}
+.nav:hover,.nav.active{background:rgba(255,255,255,.15);color:#fff;font-weight:700}
+.nav-icon{width:26px;text-align:center;font-family:Arial,sans-serif;font-size:20px}
+.nav-divider{height:1px;background:rgba(255,255,255,.28);margin:13px 5px}
+.sidebar-footer{margin-top:auto;padding:16px 7px 0;border-top:1px solid rgba(255,255,255,.2)}
+.save-state{font-size:13px;color:#eaf7ff;margin-bottom:11px}
+.copyright{font-size:12px;color:rgba(255,255,255,.72)}
+.content-shell{padding:22px;background:var(--bg);min-width:0}
+.content{
+  width:100%;max-width:1420px;min-height:calc(100vh - 44px);
+  margin:0 auto;padding:30px 34px 36px;
+  background:#fff;border-radius:20px;
+  box-shadow:0 12px 35px rgba(30,63,83,.06);
+  overflow:auto;
+}
+h1,h2,h3,.section-title,.kpi-value,.price-main,th{
+  font-family:var(--title-font);
+}
+h1{
+  margin:0 0 5px;color:var(--accent-dark);
+  font-size:38px;line-height:1;text-transform:uppercase;letter-spacing:.02em;
+}
+.lead{margin:0 0 25px;color:var(--muted);font-size:17px}
+.grid{display:grid;gap:16px}
+.grid-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:none}
+.variable-card{padding-top:14px}
+.variable-card label{color:#26343e}
+.kpi-label{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.kpi-value{font-size:27px;font-weight:800;margin-top:6px;color:var(--accent)}
+.section-title{font-size:20px;font-weight:800;margin:2px 0 14px;color:var(--accent-dark);text-transform:uppercase}
+.subtle{font-size:14px;color:var(--muted)}
+.section-bar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  margin:24px 0 13px;padding-top:20px;border-top:1px solid #e7ecef;
+}
+.section-bar h2{font-size:22px;margin:0;color:var(--accent-dark);text-transform:uppercase}
+.section-bar p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.price-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}
+.price-range{font-size:14px;font-weight:700;color:#4a6576}
+.price-main{font-size:28px;font-weight:800;color:var(--accent);margin:9px 0 2px}
+.price-secondary{font-size:14px;color:var(--muted)}
+.price-meta{font-size:12px;color:#6b8595;margin-top:7px}
+.segmented{display:inline-flex;gap:5px;background:transparent}
+.segment{
+  border:1px solid var(--accent);background:#fff;color:var(--accent);
+  padding:10px 17px;border-radius:8px;cursor:pointer;font-weight:700;font-size:16px;
+}
+.segment.active{background:var(--accent);color:#fff;box-shadow:none}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:white}
+table{width:100%;border-collapse:collapse;min-width:720px}
+th,td{padding:13px 15px;border-bottom:1px solid var(--line);text-align:right;font-size:16px;white-space:nowrap}
+th{
+  background:var(--accent);color:#fff;font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;
+}
+th:first-child,td:first-child{text-align:left}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#f8fcff}
+label{display:block;font-size:14px;color:#354955;margin-bottom:7px;font-weight:600}
+input,select{
+  width:100%;padding:10px 11px;border:1px solid #cbd7df;border-radius:7px;
+  background:#fff;font-size:17px;color:#17242d;
+}
+input:focus,select:focus{outline:3px solid rgba(7,59,92,.10);border-color:var(--accent)}
+.field{margin-bottom:13px}.field-inline{margin:0}
+.btn{
+  border:1px solid var(--accent);border-radius:8px;padding:10px 15px;
+  font-weight:700;cursor:pointer;background:var(--accent);color:white;font-size:15px;
+}
+.btn:hover{background:var(--accent-dark)}
+.btn.secondary{background:var(--accent-soft);color:var(--accent-dark)}
+.btn.ghost{background:white;color:var(--accent)}
+.btn.danger{background:#fff;color:var(--danger);border-color:#e5aaa5}
+.btn.small{padding:7px 10px;font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.notice,.info,.success{padding:12px 14px;border-radius:8px;font-size:14px;margin:16px 0}
+.notice{background:#fff8ea;border:1px solid #f2d69b;color:#875a00}
+.info{background:var(--accent-soft);border:0;color:#073B5C}
+.success{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
+.placeholder{padding:46px 22px;text-align:center;background:white;border:1px dashed #b8cbd7;border-radius:12px}
+.tag{display:inline-block;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700;background:var(--accent-soft);color:var(--accent-dark)}
+.right{display:flex;justify-content:flex-end}
+.between{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.divider{height:1px;background:var(--line);margin:18px 0}
+.formula{font-family:ui-monospace,Menlo,monospace;background:#f7fbfd;border:1px solid var(--line);padding:13px;border-radius:9px;font-size:12px;white-space:pre-wrap;line-height:1.6}
+.editable-table input{min-width:100px;padding:7px 8px}
+.backline{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.advanced-group{margin-bottom:18px}
+.advanced-group h3{font-size:16px;margin:0 0 10px}
+.advanced-total{font-family:var(--title-font);font-size:24px;font-weight:800;color:var(--accent)}
+
+/* Gorras: compact variable cards */
+.variable-grid{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:10px}
+.compact-variable{padding:13px 12px 11px;border-radius:9px;min-width:0}
+.compact-variable label{font-size:13px;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.compact-variable input{padding:9px 9px;font-size:17px;border-radius:7px}
+.compact-variable .price-meta{font-size:11px;margin-top:5px;line-height:1.2;color:var(--accent)}
+.price-range-table table{min-width:760px}
+.price-range-table th,.price-range-table td{padding:15px 17px;font-size:17px}
+.price-range-table th{font-size:15px}
+.price-range-table td:not(:first-child){font-variant-numeric:tabular-nums;font-weight:600}
+.range-origin{font-size:11px;color:var(--muted);font-weight:400;margin-top:3px}
+.money-cost{color:#354955}
+.money-final{color:#17242d}
+.money-crc{color:#17242d}
+.consult-pill{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:13px;font-weight:700}
+
+@media(max-width:1250px){
+  .variable-grid{grid-template-columns:repeat(3,minmax(150px,1fr))}
+  .layout{grid-template-columns:240px minmax(0,1fr)}
+  .brand-logo{width:180px}
+}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:relative;height:auto;padding:18px}
+  .sidebar-brand{padding:0 10px 18px}.brand-logo{width:160px}
+  .sidebar-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav-divider{display:none}.sidebar-footer{margin-top:15px}
+  .content-shell{padding:10px}.content{min-height:auto;padding:22px 18px}
+  .grid-5,.grid-4,.grid-3,.grid-2,.price-grid{grid-template-columns:1fr}
+  .between,.section-bar{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:760px){.variable-grid{grid-template-columns:repeat(2,minmax(130px,1fr))}}
+@media(max-width:480px){.variable-grid,.sidebar-nav{grid-template-columns:1fr}}
+
+.nav.nav-no-icon{
+  padding-left:15px;
+}
+
+/* V8 — énfasis sutil en la columna principal: Precio Cliente ARS */
+.price-range-table th:nth-child(3){
+  background:#073B5C;
+  box-shadow:inset 0 -3px 0 rgba(255,255,255,.55);
+}
+.price-range-table td:nth-child(3){
+  background:rgba(7,59,92,.045);
+  font-weight:800;
+  color:#073B5C;
+  box-shadow:inset 0 -1px 0 rgba(7,59,92,.12);
+}
+.price-range-table tbody tr:hover td:nth-child(3){
+  background:rgba(7,59,92,.075);
+}
+
+/* V9 — columna principal Precio Cliente ARS */
+.price-range-table th:nth-child(3){
+  background:#073B5C !important;
+  box-shadow:inset 0 -3px 0 rgba(255,255,255,.7);
+}
+.price-range-table td:nth-child(3){
+  background:rgba(7,59,92,.055);
+  color:#073B5C;
+  font-weight:800;
+}
+
+/* V10 — Jerseys dinámicos */
+#jerseyPriceBody td:nth-child(3){
+  background:rgba(7,59,92,.055);
+  color:#073B5C;
+  font-weight:800;
+}
+.price-range-table thead th:nth-child(3){
+  box-shadow:inset 0 -3px 0 rgba(255,255,255,.7);
+}
+@media(max-width:1100px){
+  .segmented{flex-wrap:wrap}
+}
+
+/* V15 — cotizador por subcategoría */
+.quote-section-head{margin-top:26px}
+.quote-panel{
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr);
+  gap:14px;
+  align-items:stretch;
+}
+.quote-input-wrap{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:16px;
+  background:var(--accent-pale);
+}
+.quote-input-wrap label{
+  color:var(--accent-dark);
+  font-family:var(--title-font);
+  text-transform:uppercase;
+  font-size:14px;
+  letter-spacing:.025em;
+}
+.quote-qty{
+  margin-top:6px;
+  font-size:24px;
+  font-weight:800;
+  color:var(--accent-dark);
+  text-align:center;
+  min-height:48px;
+}
+.quote-table-wrap{height:100%}
+.quote-table{min-width:650px;height:100%}
+.quote-table th,.quote-table td{padding:14px 16px}
+.quote-table .quote-unit{
+  color:#073B5C;
+  font-weight:800;
+  background:rgba(7,59,92,.045);
+}
+.quote-table .quote-total{
+  color:var(--accent-dark);
+  font-family:var(--title-font);
+  font-weight:800;
+  font-size:19px;
+  background:rgba(7,59,92,.075);
+}
+.quote-empty{text-align:center !important;color:var(--muted);font-weight:400 !important}
+@media(max-width:900px){
+  .quote-panel{grid-template-columns:1fr}
+}
+
+/* V16 — generación de cotización e impresión/PDF */
+.quote-modal{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;background:rgba(7,31,48,.52);
+  backdrop-filter:blur(4px);
+}
+.quote-modal-card{
+  width:min(760px,100%);
+  background:#fff;border-radius:18px;padding:24px;
+  box-shadow:0 24px 80px rgba(0,0,0,.22);
+}
+.quote-modal-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:20px}
+.quote-modal-head h2{margin:0;color:var(--accent-dark);font-size:26px;text-transform:uppercase}
+.quote-modal-head p{margin:5px 0 0;color:var(--muted)}
+.quote-close{border:0;background:transparent;font-size:32px;line-height:1;color:#6f7c86;cursor:pointer}
+.quote-form-grid{display:grid;grid-template-columns:1fr 220px;gap:14px}
+.quote-modal-summary{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:10px;margin:8px 0 20px;
+}
+.quote-modal-summary>div{padding:12px;background:var(--accent-pale);border:1px solid var(--line);border-radius:9px}
+.quote-modal-summary span{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:5px}
+.quote-modal-summary strong{color:var(--accent-dark);font-size:15px}
+
+.print-quote{
+  position:fixed;inset:0;z-index:1200;
+  overflow:auto;background:#eef2f5;padding:28px;
+}
+.print-quote-page{
+  width:min(920px,100%);margin:0 auto;background:#fff;
+  min-height:1120px;padding:0 48px 48px;
+  box-shadow:0 15px 45px rgba(0,0,0,.12);
+}
+.print-quote-header{
+  margin:0 -48px 34px;padding:28px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--accent);color:#fff;
+}
+.print-quote-logo{width:190px;max-height:76px;object-fit:contain}
+.print-quote-title{
+  font-family:var(--title-font);font-size:36px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.03em;
+}
+.print-quote-meta{
+  display:grid;grid-template-columns:1fr 220px;gap:20px;
+  padding-bottom:24px;border-bottom:1px solid var(--line);
+}
+.print-quote-meta span,.print-quote-totals span{
+  display:block;color:var(--muted);font-size:12px;text-transform:uppercase;margin-bottom:5px;
+}
+.print-quote-meta strong{font-size:19px;color:#1c2f3a}
+.print-quote-section-title{
+  font-family:var(--title-font);font-size:18px;font-weight:800;
+  text-transform:uppercase;color:var(--accent-dark);margin:28px 0 12px;
+}
+.print-quote-table{width:100%;border-collapse:collapse}
+.print-quote-table th,.print-quote-table td{
+  padding:12px;border:1px solid #dbe4e9;font-size:14px;
+}
+.print-quote-table th{background:var(--accent);color:#fff;text-align:left}
+.print-quote-table th:nth-child(n+3),.print-quote-table td:nth-child(n+3){text-align:right}
+.print-quote-totals{
+  margin:18px 0 0 auto;width:min(380px,100%);
+  border-top:1px solid var(--line);
+}
+.print-quote-totals>div{
+  display:flex;justify-content:space-between;gap:20px;
+  padding:11px 2px;border-bottom:1px solid var(--line);
+}
+.print-quote-totals span{margin:0}
+.print-quote-totals strong{color:#1b303e}
+.print-quote-totals .grand-total{font-size:19px;color:var(--accent-dark)}
+.print-quote-totals .grand-total strong{color:var(--accent-dark)}
+.print-quote-terms{
+  padding:18px 20px;border-radius:10px;background:var(--accent-pale);
+  border-left:4px solid var(--accent);line-height:1.65;color:#304957;font-size:15px;
+}
+.print-quote-thanks{
+  margin-top:42px;text-align:center;
+  font-family:var(--title-font);font-size:32px;font-weight:800;color:var(--accent);
+}
+.print-preview-actions{display:flex;justify-content:center;gap:10px;margin-top:34px}
+
+@media(max-width:760px){
+  .quote-form-grid,.quote-modal-summary,.print-quote-meta{grid-template-columns:1fr}
+  .quote-modal-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .print-quote{padding:10px}
+  .print-quote-page{padding:0 22px 30px;min-height:auto}
+  .print-quote-header{margin:0 -22px 28px;padding:24px 22px}
+  .print-quote-logo{width:140px}
+  .print-quote-title{font-size:26px}
+}
+@media print{
+  @page{size:A4;margin:0}
+  body *{visibility:hidden !important}
+  #printQuote,#printQuote *{visibility:visible !important}
+  #printQuote{
+    position:absolute !important;inset:0 !important;
+    width:100% !important;overflow:visible !important;
+    background:#fff !important;padding:0 !important;
+  }
+  .print-quote-page{
+    width:100% !important;min-height:auto !important;
+    margin:0 !important;box-shadow:none !important;
+  }
+  .no-print{display:none !important}
+  .print-quote-header,.print-quote-table th{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+}
+
+/* V19 — SOLO PDF / cotización imprimible */
+.print-quote-page{
+  position:relative;
+  overflow:hidden;
+}
+.print-quote-page > *:not(.print-quote-watermark){
+  position:relative;
+  z-index:2;
+}
+.print-quote-watermark{
+  position:absolute;
+  z-index:0;
+  left:50%;
+  bottom:70px;
+  transform:translateX(-50%);
+  width:78%;
+  max-width:720px;
+  height:auto;
+  opacity:.045;
+  filter:grayscale(1);
+  pointer-events:none;
+  user-select:none;
+}
+.print-quote-footer-art{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:28px;
+  margin-top:34px;
+}
+.print-quote-footer-art .print-quote-thanks{
+  margin-top:0;
+  text-align:left;
+  flex:1;
+}
+.print-quote-stamp{
+  width:180px;
+  max-width:28%;
+  height:auto;
+  object-fit:contain;
+  transform:rotate(-4deg);
+}
+@media(max-width:760px){
+  .print-quote-footer-art{
+    align-items:center;
+  }
+  .print-quote-stamp{
+    width:145px;
+    max-width:36%;
+  }
+  .print-quote-watermark{
+    width:92%;
+    bottom:55px;
+  }
+}
+@media print{
+  .print-quote-watermark,
+  .print-quote-stamp{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+}
+
+
+/* ============================================================
+   V20 — Plantilla de PDF, solamente cotización imprimible
+   ============================================================ */
+
+.print-quote{
+  background:#eef1f4;
+  padding:28px;
+}
+
+.print-quote-page.print-v20{
+  --pdf-blue:#073B5C;
+  --pdf-line:#cfd9e1;
+  --pdf-text:#102739;
+  --pdf-muted:#556c7d;
+  position:relative;
+  overflow:hidden;
+  width:min(900px,100%);
+  min-height:1270px;
+  margin:0 auto;
+  padding:34px 42px 28px;
+  background:#fff;
+  color:var(--pdf-text);
+  box-shadow:0 14px 42px rgba(18,44,62,.13);
+  isolation:isolate;
+}
+
+.print-v20 > *:not(.print-v20-watermark){
+  position:relative;
+  z-index:2;
+}
+
+.print-v20-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:20px;
+}
+
+.print-v20-logo{
+  display:block;
+  width:250px;
+  height:120px;
+  object-fit:contain;
+  object-position:left center;
+}
+
+.print-v20-title-wrap{
+  text-align:right;
+  min-width:285px;
+  padding-top:8px;
+}
+
+.print-v20-title{
+  font-family:var(--title-font);
+  color:var(--pdf-blue);
+  font-size:42px;
+  font-weight:800;
+  line-height:.98;
+  text-transform:uppercase;
+  letter-spacing:.035em;
+}
+
+.print-v20-title-line{
+  height:2px;
+  width:100%;
+  background:var(--pdf-blue);
+  margin:12px 0 10px;
+}
+
+.print-v20-number{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:5px;
+  background:var(--pdf-blue);
+  color:#fff;
+  font-weight:800;
+  font-size:14px;
+}
+
+.print-v20-clientbar{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border:1px solid var(--pdf-line);
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:20px;
+}
+
+.print-v20-clientcell{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:70px;
+  padding:15px 20px;
+}
+
+.print-v20-clientcell + .print-v20-clientcell{
+  border-left:1px solid var(--pdf-line);
+}
+
+.print-v20-icon{
+  color:var(--pdf-blue);
+  width:24px;
+  flex:0 0 24px;
+  font-family:Arial,sans-serif;
+  font-size:23px;
+  line-height:1;
+}
+
+.print-v20-clientcell span{
+  display:block;
+  color:var(--pdf-muted);
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.print-v20-clientcell strong{
+  display:block;
+  color:var(--pdf-text);
+  font-size:17px;
+  font-weight:700;
+}
+
+.print-v20-detail{
+  border:1px solid var(--pdf-line);
+  border-radius:8px;
+  overflow:hidden;
+  margin-bottom:20px;
+}
+
+.print-v20-sectionbar{
+  padding:10px 18px;
+  background:var(--pdf-blue);
+  color:#fff;
+  font-family:var(--title-font);
+  font-size:16px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+}
+
+.print-v20-detail-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  padding:17px 20px 16px;
+}
+
+.print-v20-detail-col{
+  padding-right:24px;
+}
+
+.print-v20-detail-right{
+  padding-left:30px;
+  padding-right:0;
+  border-left:1px solid var(--pdf-line);
+}
+
+.print-v20-detail-col > div{
+  display:grid;
+  grid-template-columns:170px minmax(0,1fr);
+  align-items:center;
+  gap:12px;
+  min-height:31px;
+  font-size:14px;
+}
+
+.print-v20-detail-col span{
+  color:var(--pdf-blue);
+  font-weight:700;
+}
+
+.print-v20-detail-col strong{
+  color:var(--pdf-text);
+  font-weight:600;
+}
+
+.print-v20-range{
+  display:inline-block;
+  width:max-content;
+  padding:5px 10px;
+  border-radius:5px;
+  background:var(--pdf-blue);
+  color:#fff !important;
+  font-weight:800 !important;
+}
+
+.print-v20-items{
+  margin-bottom:18px;
+}
+
+.print-v20-items table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border:1px solid var(--pdf-line);
+  border-radius:8px;
+}
+
+.print-v20-items th{
+  padding:11px 16px;
+  background:var(--pdf-blue);
+  color:#fff;
+  border:0;
+  font-family:var(--title-font);
+  font-size:14px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.print-v20-items th:first-child{
+  text-align:left;
+}
+
+.print-v20-items th:not(:first-child){
+  text-align:center;
+}
+
+.print-v20-items td{
+  height:88px;
+  padding:16px;
+  border:0;
+  border-right:1px solid var(--pdf-line);
+  vertical-align:top;
+  font-size:14px;
+  background:#fff;
+}
+
+.print-v20-items td:last-child{
+  border-right:0;
+}
+
+.print-v20-items td:not(:first-child){
+  text-align:right;
+}
+
+.print-v20-totals-wrap{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:34px;
+}
+
+.print-v20-totals{
+  width:58%;
+  border:1px solid var(--pdf-line);
+  border-radius:8px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.print-v20-totals > div{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+  min-height:34px;
+  padding:7px 16px;
+  font-size:14px;
+}
+
+.print-v20-totals span{
+  color:var(--pdf-blue);
+}
+
+.print-v20-totals strong{
+  color:var(--pdf-blue);
+}
+
+.print-v20-total-main{
+  margin-top:4px;
+  background:var(--pdf-blue);
+  color:#fff;
+  font-family:var(--title-font);
+  font-size:19px !important;
+  text-transform:uppercase;
+}
+
+.print-v20-total-main span,
+.print-v20-total-main strong{
+  color:#fff !important;
+  font-weight:800;
+}
+
+.print-v20-info{
+  width:62%;
+  min-height:265px;
+  padding:4px 8px 0 10px;
+}
+
+.print-v20-info-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:17px;
+  color:var(--pdf-blue);
+  font-family:var(--title-font);
+  font-size:17px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+
+.print-v20-info-dot{
+  display:inline-flex;
+  width:26px;
+  height:26px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--pdf-blue);
+  color:#fff;
+  font-family:Arial,sans-serif;
+  font-weight:700;
+  text-transform:none;
+}
+
+.print-v20-info p{
+  margin:0 0 14px;
+  color:#263f51;
+  line-height:1.55;
+  font-size:14px;
+}
+
+.print-v20-info strong{
+  color:#122f43;
+}
+
+.print-v20-thanks{
+  margin-top:20px;
+  color:var(--pdf-blue);
+  font-family:var(--title-font);
+  font-size:24px;
+  font-weight:800;
+}
+
+.print-v20-stamp{
+  position:absolute !important;
+  z-index:3 !important;
+  right:45px;
+  bottom:135px;
+  width:220px;
+  height:220px;
+  object-fit:contain;
+  transform:rotate(-4deg);
+  background:transparent !important;
+}
+
+.print-v20-watermark{
+  position:absolute !important;
+  z-index:0 !important;
+  left:48%;
+  bottom:42px;
+  width:82%;
+  height:auto;
+  transform:translateX(-50%);
+  opacity:.045;
+  filter:grayscale(1);
+  pointer-events:none;
+  user-select:none;
+}
+
+.print-v20-footer{
+  position:absolute !important;
+  left:42px;
+  right:42px;
+  bottom:28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-top:12px;
+  border-top:2px solid var(--pdf-blue);
+  color:var(--pdf-blue);
+  font-size:13px;
+}
+
+.print-v20 .print-preview-actions{
+  position:absolute;
+  left:50%;
+  bottom:-72px;
+  transform:translateX(-50%);
+  z-index:20;
+  display:flex;
+  gap:10px;
+  white-space:nowrap;
+}
+
+@media(max-width:760px){
+  .print-quote{padding:10px}
+  .print-quote-page.print-v20{
+    min-height:0;
+    padding:22px 20px 28px;
+  }
+  .print-v20-header{
+    align-items:center;
+  }
+  .print-v20-logo{
+    width:150px;
+    height:80px;
+  }
+  .print-v20-title{
+    font-size:28px;
+  }
+  .print-v20-title-wrap{
+    min-width:200px;
+  }
+  .print-v20-clientbar,
+  .print-v20-detail-grid{
+    grid-template-columns:1fr;
+  }
+  .print-v20-clientcell + .print-v20-clientcell{
+    border-left:0;
+    border-top:1px solid var(--pdf-line);
+  }
+  .print-v20-detail-right{
+    padding:15px 0 0;
+    margin-top:12px;
+    border-left:0;
+    border-top:1px solid var(--pdf-line);
+  }
+  .print-v20-detail-col{
+    padding-right:0;
+  }
+  .print-v20-detail-col > div{
+    grid-template-columns:145px minmax(0,1fr);
+  }
+  .print-v20-totals{
+    width:100%;
+  }
+  .print-v20-info{
+    width:100%;
+    min-height:auto;
+  }
+  .print-v20-stamp{
+    position:relative !important;
+    display:block;
+    right:auto;
+    bottom:auto;
+    margin:20px 0 50px auto;
+    width:160px;
+    height:160px;
+  }
+  .print-v20-footer{
+    position:relative !important;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    margin-top:28px;
+  }
+}
+
+@media print{
+  @page{
+    size:A4;
+    margin:0;
+  }
+
+  body *{
+    visibility:hidden !important;
+  }
+
+  #printQuote,
+  #printQuote *{
+    visibility:visible !important;
+  }
+
+  #printQuote{
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    overflow:visible !important;
+    background:#fff !important;
+    padding:0 !important;
+  }
+
+  .print-quote-page.print-v20{
+    width:210mm !important;
+    min-height:297mm !important;
+    max-height:297mm !important;
+    margin:0 !important;
+    padding:10mm 11mm 8mm !important;
+    box-shadow:none !important;
+    overflow:hidden !important;
+  }
+
+  .print-v20-logo{
+    width:58mm !important;
+    height:27mm !important;
+  }
+
+  .print-v20-title{
+    font-size:29pt !important;
+  }
+
+  .print-v20-stamp{
+    right:12mm !important;
+    bottom:31mm !important;
+    width:48mm !important;
+    height:48mm !important;
+  }
+
+  .print-v20-watermark{
+    bottom:8mm !important;
+    width:84% !important;
+    opacity:.045 !important;
+  }
+
+  .print-v20-footer{
+    left:11mm !important;
+    right:11mm !important;
+    bottom:7mm !important;
+  }
+
+  .print-v20-header,
+  .print-v20-sectionbar,
+  .print-v20-items th,
+  .print-v20-total-main,
+  .print-v20-number,
+  .print-v20-range,
+  .print-v20-info-dot,
+  .print-v20-stamp{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+
+  .no-print{
+    display:none !important;
+  }
+}
+
+/* V21 — correcciones exclusivas de cotización/PDF */
+.print-v20-title-wrap{
+  padding-top:18px;
+}
+.print-v21-client-detail > div{
+  grid-template-columns:170px minmax(0,1fr);
+}
+
+/* Los controles deben quedar debajo de la hoja y siempre accesibles en preview. */
+.print-quote{
+  padding-bottom:110px !important;
+}
+.print-v20 .print-preview-actions{
+  position:fixed !important;
+  left:50% !important;
+  bottom:18px !important;
+  transform:translateX(-50%) !important;
+  z-index:5000 !important;
+  padding:10px !important;
+  border-radius:12px !important;
+  background:rgba(255,255,255,.96) !important;
+  box-shadow:0 8px 28px rgba(0,0,0,.16) !important;
+}
+
+/* El PDF usa la misma geometría visual que la vista previa.
+   Se escala la hoja completa a A4 en vez de reconstruir tamaños distintos. */
+@media print{
+  html,body{
+    width:210mm !important;
+    height:297mm !important;
+    margin:0 !important;
+    padding:0 !important;
+    background:#fff !important;
+  }
+
+  #printQuote{
+    position:absolute !important;
+    top:0 !important;
+    left:0 !important;
+    width:210mm !important;
+    height:297mm !important;
+    padding:0 !important;
+    margin:0 !important;
+    overflow:hidden !important;
+    background:#fff !important;
+  }
+
+  .print-quote-page.print-v20{
+    /* Misma composición que preview: 900px de ancho. */
+    width:900px !important;
+    min-width:900px !important;
+    max-width:900px !important;
+    min-height:1270px !important;
+    max-height:1270px !important;
+    height:1270px !important;
+    margin:0 !important;
+    padding:34px 42px 28px !important;
+    box-sizing:border-box !important;
+    box-shadow:none !important;
+    transform:scale(0.8819) !important;
+    transform-origin:top left !important;
+  }
+
+  .print-v20-logo{
+    width:250px !important;
+    height:120px !important;
+  }
+  .print-v20-title{
+    font-size:42px !important;
+  }
+  .print-v20-stamp{
+    right:45px !important;
+    bottom:135px !important;
+    width:220px !important;
+    height:220px !important;
+  }
+  .print-v20-watermark{
+    bottom:42px !important;
+    width:82% !important;
+  }
+  .print-v20-footer{
+    left:42px !important;
+    right:42px !important;
+    bottom:28px !important;
+  }
+  .no-print{
+    display:none !important;
+  }
+}
+
+/* ============================================================
+   V22 — PREVIEW Y PDF CON LA MISMA GEOMETRÍA A4
+   Estas reglas son finales y afectan SOLO la cotización.
+   ============================================================ */
+
+.print-quote{
+  padding:24px 24px 100px !important;
+  overflow:auto !important;
+  background:#eef1f4 !important;
+}
+
+/* La vista previa YA es una hoja A4 real.
+   Por lo tanto no existe una segunda composición al imprimir. */
+.print-quote-page.print-v20{
+  width:210mm !important;
+  min-width:210mm !important;
+  max-width:210mm !important;
+  height:297mm !important;
+  min-height:297mm !important;
+  max-height:297mm !important;
+  margin:0 auto !important;
+  padding:10mm 11mm 8mm !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+  transform:none !important;
+  background:#fff !important;
+}
+
+/* Ajustes para que todo entre limpiamente en una sola hoja A4. */
+.print-v20-header{
+  margin-bottom:5mm !important;
+}
+.print-v20-logo{
+  width:55mm !important;
+  height:26mm !important;
+}
+.print-v20-title-wrap{
+  min-width:70mm !important;
+  padding-top:3mm !important;
+}
+.print-v20-title{
+  font-size:30pt !important;
+}
+.print-v20-title-line{
+  margin:3mm 0 0 !important;
+}
+
+.print-v20-clientbar{
+  margin-bottom:5mm !important;
+}
+.print-v20-clientcell{
+  min-height:17mm !important;
+  padding:3mm 5mm !important;
+}
+
+.print-v20-detail{
+  margin-bottom:5mm !important;
+}
+.print-v20-sectionbar{
+  padding:2.6mm 4mm !important;
+}
+.print-v20-detail-grid{
+  padding:4mm 5mm !important;
+}
+.print-v20-detail-col > div{
+  min-height:7mm !important;
+}
+
+.print-v20-items{
+  margin-bottom:4mm !important;
+}
+.print-v20-items td{
+  height:20mm !important;
+  padding:4mm !important;
+}
+
+.print-v20-totals-wrap{
+  margin-bottom:7mm !important;
+}
+.print-v20-totals{
+  width:58% !important;
+}
+.print-v20-totals > div{
+  min-height:8mm !important;
+  padding:1.6mm 4mm !important;
+}
+
+.print-v20-info{
+  width:62% !important;
+  min-height:61mm !important;
+}
+.print-v20-info-title{
+  margin-bottom:4mm !important;
+}
+.print-v20-info p{
+  margin-bottom:3mm !important;
+  line-height:1.45 !important;
+}
+.print-v20-thanks{
+  margin-top:4mm !important;
+}
+
+.print-v20-stamp{
+  right:11mm !important;
+  bottom:30mm !important;
+  width:48mm !important;
+  height:48mm !important;
+}
+.print-v20-watermark{
+  left:48% !important;
+  bottom:8mm !important;
+  width:82% !important;
+}
+.print-v20-footer{
+  left:11mm !important;
+  right:11mm !important;
+  bottom:7mm !important;
+}
+
+/* Controles del preview fuera de la hoja y siempre visibles. */
+.print-v20 .print-preview-actions{
+  position:fixed !important;
+  left:50% !important;
+  bottom:16px !important;
+  transform:translateX(-50%) !important;
+  z-index:5000 !important;
+}
+
+/* Impresión: NO redimensionar, NO escalar, NO recolocar.
+   Se imprime exactamente la misma hoja A4 mostrada en pantalla. */
+@media print{
+  @page{
+    size:A4 portrait;
+    margin:0;
+  }
+
+  html,body{
+    width:210mm !important;
+    height:297mm !important;
+    margin:0 !important;
+    padding:0 !important;
+    background:#fff !important;
+    overflow:hidden !important;
+  }
+
+  body *{
+    visibility:hidden !important;
+  }
+
+  #printQuote,
+  #printQuote *{
+    visibility:visible !important;
+  }
+
+  #printQuote{
+    position:absolute !important;
+    inset:0 !important;
+    width:210mm !important;
+    height:297mm !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    background:#fff !important;
+  }
+
+  .print-quote-page.print-v20{
+    position:absolute !important;
+    inset:0 !important;
+    width:210mm !important;
+    min-width:210mm !important;
+    max-width:210mm !important;
+    height:297mm !important;
+    min-height:297mm !important;
+    max-height:297mm !important;
+    margin:0 !important;
+    padding:10mm 11mm 8mm !important;
+    box-sizing:border-box !important;
+    transform:none !important;
+    transform-origin:initial !important;
+    box-shadow:none !important;
+    overflow:hidden !important;
+  }
+
+  .print-v20-header{margin-bottom:5mm !important}
+  .print-v20-logo{width:55mm !important;height:26mm !important}
+  .print-v20-title-wrap{min-width:70mm !important;padding-top:3mm !important}
+  .print-v20-title{font-size:30pt !important}
+  .print-v20-title-line{margin:3mm 0 0 !important}
+  .print-v20-clientbar{margin-bottom:5mm !important}
+  .print-v20-clientcell{min-height:17mm !important;padding:3mm 5mm !important}
+  .print-v20-detail{margin-bottom:5mm !important}
+  .print-v20-sectionbar{padding:2.6mm 4mm !important}
+  .print-v20-detail-grid{padding:4mm 5mm !important}
+  .print-v20-detail-col > div{min-height:7mm !important}
+  .print-v20-items{margin-bottom:4mm !important}
+  .print-v20-items td{height:20mm !important;padding:4mm !important}
+  .print-v20-totals-wrap{margin-bottom:7mm !important}
+  .print-v20-totals{width:58% !important}
+  .print-v20-totals > div{min-height:8mm !important;padding:1.6mm 4mm !important}
+  .print-v20-info{width:62% !important;min-height:61mm !important}
+  .print-v20-info-title{margin-bottom:4mm !important}
+  .print-v20-info p{margin-bottom:3mm !important;line-height:1.45 !important}
+  .print-v20-thanks{margin-top:4mm !important}
+  .print-v20-stamp{right:11mm !important;bottom:30mm !important;width:48mm !important;height:48mm !important}
+  .print-v20-watermark{left:48% !important;bottom:8mm !important;width:82% !important}
+  .print-v20-footer{left:11mm !important;right:11mm !important;bottom:7mm !important}
+
+  .print-v20-header,
+  .print-v20-sectionbar,
+  .print-v20-items th,
+  .print-v20-total-main,
+  .print-v20-info-dot,
+  .print-v20-stamp,
+  .print-v20-watermark{
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+
+  .no-print{
+    display:none !important;
+  }
+}
+
+/* ============================================================
+   V23 — PDF = MISMA MAQUETA QUE LA VISTA PREVIA
+   No se redefine el diseño al imprimir.
+   ============================================================ */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #printQuote,
+  #printQuote * {
+    visibility: visible !important;
+  }
+
+  #printQuote {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  /* Esta es exactamente la misma hoja A4 del preview. */
+  #printQuote .print-quote-page.print-v20 {
+    position: relative !important;
+    inset: auto !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 10mm 11mm 8mm !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    transform: none !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  /* Bloques: mantener exactamente la composición del preview. */
+  #printQuote .print-v20-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 30px !important;
+    margin-bottom: 5mm !important;
+  }
+
+  #printQuote .print-v20-logo {
+    width: 55mm !important;
+    height: 26mm !important;
+    object-fit: contain !important;
+    object-position: left center !important;
+  }
+
+  #printQuote .print-v20-title-wrap {
+    min-width: 70mm !important;
+    padding-top: 3mm !important;
+    text-align: right !important;
+  }
+
+  #printQuote .print-v20-title {
+    font-size: 30pt !important;
+  }
+
+  #printQuote .print-v20-clientbar {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    margin-bottom: 5mm !important;
+  }
+
+  #printQuote .print-v20-clientcell {
+    display: flex !important;
+    min-height: 17mm !important;
+    padding: 3mm 5mm !important;
+    border-top: 0 !important;
+  }
+
+  #printQuote .print-v20-clientcell + .print-v20-clientcell {
+    border-left: 1px solid var(--pdf-line) !important;
+    border-top: 0 !important;
+  }
+
+  #printQuote .print-v20-detail-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    padding: 4mm 5mm !important;
+  }
+
+  #printQuote .print-v20-detail-col {
+    padding-right: 24px !important;
+  }
+
+  #printQuote .print-v20-detail-right {
+    padding: 0 0 0 30px !important;
+    margin-top: 0 !important;
+    border-top: 0 !important;
+    border-left: 1px solid var(--pdf-line) !important;
+  }
+
+  #printQuote .print-v20-detail-col > div {
+    display: grid !important;
+    grid-template-columns: 170px minmax(0, 1fr) !important;
+    min-height: 7mm !important;
+  }
+
+  #printQuote .print-v20-items table {
+    display: table !important;
+    table-layout: auto !important;
+    width: 100% !important;
+  }
+
+  #printQuote .print-v20-items thead {
+    display: table-header-group !important;
+  }
+
+  #printQuote .print-v20-items tbody {
+    display: table-row-group !important;
+  }
+
+  #printQuote .print-v20-items tr {
+    display: table-row !important;
+  }
+
+  #printQuote .print-v20-items th,
+  #printQuote .print-v20-items td {
+    display: table-cell !important;
+  }
+
+  #printQuote .print-v20-totals-wrap {
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin-bottom: 7mm !important;
+  }
+
+  #printQuote .print-v20-totals {
+    width: 58% !important;
+  }
+
+  #printQuote .print-v20-info {
+    width: 62% !important;
+    min-height: 61mm !important;
+  }
+
+  #printQuote .print-v20-stamp {
+    position: absolute !important;
+    right: 11mm !important;
+    bottom: 30mm !important;
+    width: 48mm !important;
+    height: 48mm !important;
+  }
+
+  #printQuote .print-v20-watermark {
+    position: absolute !important;
+    left: 48% !important;
+    bottom: 8mm !important;
+    width: 82% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  #printQuote .print-v20-footer {
+    position: absolute !important;
+    left: 11mm !important;
+    right: 11mm !important;
+    bottom: 7mm !important;
+  }
+
+  #printQuote .no-print {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  #printQuote .print-v20-header,
+  #printQuote .print-v20-sectionbar,
+  #printQuote .print-v20-items th,
+  #printQuote .print-v20-total-main,
+  #printQuote .print-v20-info-dot,
+  #printQuote .print-v20-stamp,
+  #printQuote .print-v20-watermark {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* V24 — selección de moneda en cotización */
+.quote-panel-v24{
+  grid-template-columns:300px minmax(0,1fr);
+}
+.quote-controls{
+  display:grid;
+  gap:10px;
+}
+.quote-currency-wrap{
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:16px;
+  background:#fff;
+}
+.quote-currency-wrap label{
+  color:var(--accent-dark);
+  font-family:var(--title-font);
+  text-transform:uppercase;
+  font-size:14px;
+  letter-spacing:.025em;
+}
+.quote-currency{
+  margin-top:6px;
+  min-height:44px;
+  font-weight:700;
+  color:var(--accent-dark);
+}
+@media(max-width:900px){
+  .quote-panel-v24{grid-template-columns:1fr}
+}

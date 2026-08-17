@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#073B5C" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Sprint Precios" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <title>Sprint — Sistema de Precios</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="sprint-logo.png" alt="Sprint" class="brand-logo" />
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav active nav-no-icon" data-view="dashboard"><span>Resumen</span></button>
+        <button class="nav nav-no-icon" data-view="gorras"><span>Gorras</span></button>
+        <button class="nav nav-no-icon" data-view="jerseys"><span>Jerseys</span></button>
+        <button class="nav nav-no-icon" data-view="calzas"><span>Calzas</span></button>
+        <button class="nav nav-no-icon" data-view="conjuntos"><span>Conjuntos</span></button>
+        <button class="nav nav-no-icon" data-view="accesorios"><span>Accesorios</span></button>
+        <div class="nav-divider"></div>
+        <button class="nav" data-view="config"><span class="nav-icon">⚙</span><span>Configuración</span></button>
+        <button class="nav" data-view="backup"><span class="nav-icon">⇅</span><span>Backup / Restaurar</span></button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="save-state" id="saveState">Datos guardados en este navegador</div>
+        <div class="copyright">© Sprint · Sistema de Precios</div>
+      </div>
+    </aside>
+
+    <section class="content-shell">
+      <section class="content">
+        <div id="app"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>

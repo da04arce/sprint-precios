@@ -177,3 +177,133 @@ V28 — CORRECCIÓN DEFINITIVA PRO CORE
 - El cotizador mantiene 1–9 para el primer rango.
 - No se modifican precios, costos ni demás configuraciones.
 - Caché PWA actualizada a v28.
+
+V29 — VARIABLES TEMPORALES + SEÑA EDITABLE
+- Los gastos variables (utilidad, envío, impuestos, comisión y tipos de cambio) ya no se guardan.
+- Al salir de Gorras o Jerseys hacia otra pestaña, vuelven automáticamente a los valores por defecto.
+- Los costos y opciones avanzadas continúan guardándose normalmente.
+- En Generar Cotización la seña inicia en 50%.
+- Se muestra porcentaje de seña, monto editable y saldo restante.
+- Solo se edita el monto de seña; el porcentaje se calcula automáticamente.
+- Vista previa y PDF usan el porcentaje/monto de seña elegido.
+- El texto de condiciones también refleja el porcentaje real de seña.
+- Caché PWA actualizada a v29.
+
+V30 — PDF DE PRECIOS POR RANGO
+- Botón "Imprimir rango de precio" debajo del cotizador.
+- Disponible en todas las subcategorías actuales de Gorras y Jerseys.
+- Usa la moneda seleccionada en el cotizador.
+- Incluye todos los rangos y su precio unitario.
+- Sin cliente, fecha, seña ni saldo.
+- Incluye explicación de compra, sello, marca de agua y formato Sprint.
+- No modifica cálculos ni precios.
+- Caché PWA v30.
+
+V31 — MONEDA AL IMPRIMIR RANGOS
+- Al tocar "Imprimir rango de precio" se abre una selección de moneda.
+- Opciones: Pesos argentinos (ARS) o Colones (CRC).
+- El PDF de rangos se genera con la moneda elegida en ese momento.
+- Ya no depende de la moneda seleccionada en el cotizador.
+- No se modificaron precios ni fórmulas.
+- Caché PWA actualizada a v31.
+
+V32 — CALZAS
+- Sección Calzas implementada con la misma estructura funcional de Jerseys.
+- Subcategorías: Calza corta Pro Core y Calza corta Pro Core con pad elastic interface.
+- Valores base tomados del archivo Precios_calzas_sprint.numbers:
+  Pro Core: proveedor US$40,60; gasto US$55,60; venta US$77,84.
+  Pro Core + Elastic Interface: proveedor US$50,60; gasto US$65,60; venta US$91,84.
+  Utilidad 40%, envío US$10, impuestos US$3, comisión US$2, USD→CRC 445, USD→ARS 1.498.
+- Gastos variables temporales, opciones avanzadas, cotizador ARS/CRC, seña editable,
+  PDF de cotización y PDF de precios por rango con selector ARS/CRC.
+- Caché PWA v32.
+
+V33 — CONJUNTOS
+- Sección Conjuntos implementada con la misma lógica funcional de Jerseys y Calzas.
+- Subcategorías del archivo: Conjunto Pro Core y Conjunto Pro Core con pad elastic interface.
+- Valores del archivo: proveedor US$77,10 / US$87,10; gasto US$92,10 / US$102,10; venta US$128,94 / US$142,94.
+- Utilidad 40%, envío US$10, impuestos US$3, comisión US$2, USD→CRC 445, USD→ARS 1.498.
+- Incluye gastos variables temporales, opciones avanzadas, cotizador ARS/CRC, seña editable,
+  PDF de cotización y PDF de precios con selector ARS/CRC.
+- Caché PWA v33.
+
+V34 — ACTUALIZACIÓN CONJUNTOS
+Fuente: Precios_conjuntos_sprint(1).numbers
+
+Valores exactos:
+- Utilidad: 40%
+- Envío: US$20
+- Impuestos: US$6
+- Comisión por pago: US$4
+- USD→CRC: 445
+- USD→ARS: 1498
+
+Conjunto Pro Core:
+- Precio unitario: US$77,10
+- Gasto: US$107,10
+- Precio Venta: US$149,94
+
+Conjunto Pro Core con pad elastic interface:
+- Precio unitario: US$87,10
+- Gasto: US$117,10
+- Precio Venta: US$163,94
+
+Se mantiene toda la funcionalidad existente de Conjuntos.
+Caché PWA actualizada a v34.
+
+V35 — PRECIOS FINALES REDONDEADOS DE GORRAS
+- La columna Precio Cliente ARS de Gorras usa ahora los valores de "Precio final"
+  del archivo Precios gorras Sprint(3).numbers.
+- Personalizadas:
+  Unidad $39.000
+  2-3 $35.000
+  4-9 $27.000
+  10-30 $25.000
+  30-100 $20.000
+- La cotización ARS y los PDFs de Gorras toman esos mismos precios finales.
+- Se conserva el resto de la lógica y las demás secciones sin cambios.
+- Caché PWA actualizada a v35.
+
+V36 — ACTUALIZACIÓN JERSEYS / CALZAS / CONJUNTOS
+Fuentes:
+- Precios_Jersey_Sprint(4).numbers
+- Precios_calzas_sprint(2).numbers
+- Precios_conjuntos_sprint(3).numbers
+
+Jerseys:
+- Utilidad 40%, envío base US$6, impuesto 21%, comisión 5%, declarado US$5.
+- Exclusive: precios proveedor 26.20 / 25.20 / 23.80.
+- Pro Core: nuevos rangos Unidad, 2-5, 6-9, 10-49 y 50 unidades.
+- Envíos Pro Core según Excel: US$39 / 15 / 10 / 6 / 6.
+- Epic actualizado con la nueva fórmula porcentual.
+
+Calzas:
+- Utilidad 35%, envío US$39, impuesto 21%, comisión 5%, declarado US$5.
+- Pro Core: gasto 92.82, venta 125.307.
+- Elastic Interface: gasto 103.32, venta 139.482.
+
+Conjuntos:
+- Utilidad 35%, envío US$39, impuesto 21%, comisión 5%, declarado US$10.
+- Pro Core: gasto 132.195, venta 178.46325.
+- Elastic Interface: gasto 142.695, venta 192.63825.
+
+Los 15 casos con precio fueron verificados matemáticamente contra los valores calculados de los archivos.
+Caché PWA actualizada a v36.
+
+V37 — CORRECCIÓN PRECIOS DINÁMICOS DE GORRAS
+- Los precios finales redondeados del Excel siguen siendo los valores ARS por defecto.
+- Si cambia utilidad, envío, impuestos, comisión o USD→ARS, el precio cliente ARS se recalcula dinámicamente.
+- Los precios ARS dinámicos se redondean al peso entero.
+- CRC mantiene su cálculo dinámico.
+- No se modificaron Jerseys, Calzas ni Conjuntos.
+- Caché PWA actualizada a v37.
+
+V38 — REPARACIÓN GORRAS
+- Se restauró el motor correcto de Gorras.
+- Unidad, 2-3 y 4-9 vuelven a usar Producción Sprint + costo de diseño del rango.
+- 10-30 y 30-100 vuelven a usar Producción China + gastos variables.
+- Con valores por defecto se muestran los precios finales redondeados del Excel.
+- Si cambia utilidad, envío, impuestos, comisión o USD→ARS, el precio ARS se recalcula dinámicamente.
+- CRC continúa recalculándose dinámicamente.
+- Jerseys, Calzas y Conjuntos no se modificaron.
+- Caché PWA actualizada a v38.
